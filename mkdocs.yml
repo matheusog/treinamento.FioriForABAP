@@ -1,0 +1,20 @@
+#Project Information
+site_name: Fiori For ABAP
+site_description: Treinamento de Fiori For ABAP
+site_author: Matheus Goulart
+
+#Repository
+repo_url: https://github.com/matheusog/treinamento.FioriForABAP.git
+
+#Customization
+extra_css: 
+  - css/extra.css
+
+# Extensions
+markdown_extensions:
+  - markdown.extensions.attr_list
+  - markdown.extensions.def_list
+
+#Page Tree
+pages: 
+  - Home: 'index.md'
