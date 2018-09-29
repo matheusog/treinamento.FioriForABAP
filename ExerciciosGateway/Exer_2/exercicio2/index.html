@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="author" content="Matheus Goulart">
+        
+        <link rel="shortcut icon" href="../../../img/favicon.ico">
+        <title>Exercício 2 - Fiori For ABAP</title>
+        <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+        <link href="../../../css/extra.css" rel="stylesheet">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="../../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../../js/bootstrap-3.0.3.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+
+                <!-- Collapsed navigation -->
+                <div class="navbar-header">
+                    <!-- Expander button -->
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="../../..">Fiori For ABAP</a>
+                </div>
+
+                <!-- Expanded navigation -->
+                <div class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li >
+                                <a href="../../..">Home</a>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Introdução ao Gateway <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li >
+    <a href="../../Exer_1/exercicio1/">Exercício 1</a>
+</li>
+                                    
+<li class="active">
+    <a href="./">Exercício 2</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li >
+                                <a rel="next" href="../../Exer_1/exercicio1/">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="disabled">
+                                <a rel="prev" >
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://github.com/matheusog/treinamento.FioriForABAP.git/edit/master/docs/ExerciciosGateway/Exer_2/exercicio2.md"><i class="fa fa-github"></i> Edit on GitHub</a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#criar-novo-projeto-no-gateway">Criar novo projeto no Gateway</a></li>
+            <li><a href="#contexto">Contexto</a></li>
+            <li><a href="#importando-um-search-help">Importando um Search Help</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="criar-novo-projeto-no-gateway">Criar novo projeto no Gateway</h1>
+<p>&nbsp;</p>
+<h2 id="contexto">Contexto</h2>
+<p>&nbsp;</p>
+<p>Criar uma nova entidade, que será um match code de companhias áreas (SCARR-CARRID), podendo realizar a pesquisa através do código e do nome (SCARR-CARRNAME). </p>
+<h2 id="importando-um-search-help">Importando um Search Help</h2>
+<p>Para não precisar criar um novo search help Z, vamos utilizar um objeto standard já existente, que é o Search Help <strong>H_SCARR</strong>. </p>
+<p>&nbsp;
+<img alt="SH_01" class="center" src="../img/SH_01.png" />
+&nbsp;</p>
+<p>Na transação <strong>SEGW</strong>, clique com o botão direito na pasta <strong>Data Model</strong>. Vá em <strong>Import &gt; Search Help</strong></p>
+<p>&nbsp;
+<img alt="SH_02" class="center" src="../img/SH_02.png" /></p>
+<p><img alt="SH_03" class="center" src="../img/SH_03.png" />
+&nbsp;</p>
+<p>Selecione o search help standard, e dê um nome qualquer para o Entity Type (esse nome será sobrescrito pelo nome do Search Help quando o objeto for importado). </p>
+<p>&nbsp;
+<img alt="SH_04" class="center" src="../img/SH_04.png" />
+&nbsp;</p>
+<p>Marque os campos do Search Help que você deseja importar, e selecione qual a chave primária da sua entidade. </p>
+<p>&nbsp;
+<img alt="SH_05" class="center" src="../img/SH_05.png" /></p>
+<p><img alt="SH_06" class="center" src="../img/SH_06.png" />
+&nbsp;</p>
+<p>Após esse procedimento, você poderá visualizar o seu search help criado como uma entidade no projeto, e com os métodos <strong>Read</strong> e <strong>Query</strong> mapeados (pasta <strong>Service Implementation</strong>.</p>
+<p>&nbsp;
+<img alt="SH_07" class="center" src="../img/SH_07.png" /></p>
+<p><img alt="SH_08" class="center" src="../img/SH_08.png" /></p>
+<p><img alt="SH_09" class="center" src="../img/SH_09.png" />
+&nbsp;</p>
+<p>Agora é preciso ativar/gerar o serviço. Após gerar o serviço, as classe do gateway serão auto-geradas, preenchendo a pasta de <strong>Runtime Artifacts</strong>.</p>
+<p>&nbsp;
+<img alt="SH_10" class="center" src="../img/SH_10.png" /></p>
+<p><img alt="SH_11" class="center" src="img/SH_11.png" /></p>
+<p><img alt="SH_12" class="center" src="../img/SH_12.png" /></p>
+<p><img alt="SH_13" class="center" src="../img/SH_13.png" /></p>
+<p><img alt="SH_14" class="center" src="../img/SH_14.png" />
+&nbsp;</p>
+<p>O ultimo passo antes de o serviço poder ser testado/executado, é publicar o serviço no Gateway, através da transação <strong>/IWFND/MAINT_SERVICE</strong>. Há um atalho também para poder criar a configuração de publicação através da própria transação <strong>SEGW</strong>, é na pasta <strong>Service Maintenance</strong>.</p>
+<p>&nbsp;
+<img alt="SH_15" class="center" src="../img/SH_15.png" /></p>
+<p><img alt="SH_16" class="center" src="../img/SH_16.png" /></p>
+<p><img alt="SH_17" class="center" src="../img/SH_17.png" /></p>
+<p><img alt="SH_18" class="center" src="../img/SH_18.png" /></p>
+<p><img alt="SH_19" class="center" src="../img/SH_19.png" /></p>
+<p><img alt="SH_20" class="center" src="../img/SH_20.png" /></p>
+<p><img alt="SH_21" class="center" src="../img/SH_21.png" /></p>
+<p><img alt="SH_22" class="center" src="../img/SH_22.png" />
+&nbsp;</p>
+<p>Para testar, clique em <strong>Chamar Browser</strong> para testar no seu browser principal, ou no <strong>SAP Gateway Client</strong> para testar através do AS ABAP.</p>
+<p>&nbsp;
+<img alt="SH_23" class="center" src="../img/SH_23.png" /></p>
+<p><img alt="SH_24" class="center" src="../img/SH_24.png" /></p>
+<p><img alt="SH_25" class="center" src="../img/SH_25.png" />
+&nbsp;</p></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "../../..",
+                shortcuts = {"search": 83, "next": 78, "help": 191, "previous": 80};
+        </script>
+        <script src="../../../js/base.js" defer></script>
+        <script src="../../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
